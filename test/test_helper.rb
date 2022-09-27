@@ -3,21 +3,6 @@ require_relative "../config/environment"
 require "rails/test_help"
 
 
-require 'simplecov'
-require 'simplecov-lcov'
-  
-SimpleCov::Formatter::LcovFormatter.config do |config|
-  config.report_with_single_file = true
-  config.lcov_file_name = 'coverage/lcov.info'
-end
-
-SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
-  SimpleCov::Formatter::LcovFormatter
-])
-
-SimpleCov.start
-
-
 
 class ActiveSupport::TestCase
   # Run tests in parallel with specified workers
