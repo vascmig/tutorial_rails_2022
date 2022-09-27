@@ -1,6 +1,6 @@
 <h1>Novo aluno</h1>
 
-<% if @aluno.errors.any? %>
+<% if @aluno!=nil && @aluno.errors.any? %>
 <div id="error_explanation">
     <h2>
     <%= @aluno.errors.count %> erro(s) impedem que o aluno seja salvo:
@@ -12,8 +12,6 @@
     </ul>
 </div>
 <% end %>
-
-
 <%= form_with scope: :aluno, url: alunos_path, local: true do |form| %>
   <p>
     <%= form.label :nome %><br>
@@ -24,7 +22,7 @@
     <%= form.label :email %><br>
     <%= form.text_field :email %>
   </p>
- 
+
   <p>
     <%= form.submit 'Salvar novo aluno' %>
   </p>
