@@ -1,5 +1,5 @@
 class AlunosController < ApplicationController
-  def new      
+  def new 
     @aluno = Aluno.new
   end
   def create
@@ -8,7 +8,18 @@ class AlunosController < ApplicationController
     if @aluno.save
       redirect_to @aluno
     else
-      render 'new'
+      
+      if @aluno.errors.any? 
+        puts @aluno.errors
+        @aluno.errors.full_messages.each do |msg| 
+          puts msg
+        end
+        render :new, status: :unprocessable_entity, content_type: "text/html"
+        # NOTE: you can also set headers like this
+        headers["Content-Type"] = "text/html"
+
+        #render 'new'
+      end
     end
   end
 
